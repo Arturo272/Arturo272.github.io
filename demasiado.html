@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estamos aquí para ti</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+            margin: 30px auto;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        .message {
+            background-color: #f8f9fa;
+            border-left: 5px solid #3498db;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        .message:before {
+            content: "";
+            font-size: 60px;
+            color: #3498db;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            opacity: 0.2;
+        }
+        .quote {
+            font-style: italic;
+            color: #7f8c8d;
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 3px solid #bdc3c7;
+        }
+        .options {
+            margin: 40px 0 20px;
+        }
+        .option-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            min-width: 150px;
+        }
+        .option-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .better {
+            background-color: #2ecc71;
+        }
+        .worse {
+            background-color: #e74c3c;
+        }
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .hidden {
+            display: none;
+        }
+        .bear {
+            width: 150px;
+            margin: 20px auto;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            .option-btn {
+                display: block;
+                width: 80%;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="gato2.png" alt="Oso de apoyo" class="bear">
+        <h1>No estás solo/a en esto</h1>
+        
+        <div class="message">
+            <p>Querido/a amigo/a,</p>
+            <p>Entiendo que este momento debe ser muy difícil para ti. Reprobar puede sentirse como un fracaso personal, pero <strong>quiero que sepas que un resultado académico no define tu valor como persona</strong>.</p>
+            
+            <div class="quote">
+                "El éxito no es definitivo, el fracaso no es fatal: es el coraje para continuar lo que cuenta." — Winston Churchill
+            </div>
+            
+            <p>Desde la psicología cognitiva, sabemos que lo que más duele no es el evento en sí, sino lo que nos decimos sobre él. Es normal sentir decepción, pero <strong>evita los pensamientos absolutos</strong> como "nunca lo lograré" o "soy un fracaso". Estos son distorsiones cognitivas que amplifican el dolor.</p>
+            
+            <p>La investigación en psicología educativa muestra que muchos de los estudiantes más exitosos han experimentado reveses académicos. Lo que los distingue es su <strong>capacidad de resiliencia</strong> - aprender de la experiencia y volver a intentarlo.</p>
+            
+            <p>Te sugiero:</p>
+            <ol>
+                <li><strong>Permítete sentir</strong>: No reprimas tus emociones. El duelo académico es real.</li>
+                <li><strong>Analiza objetivamente</strong>: ¿Qué factores contribuyeron? ¿Cuáles estaban bajo tu control?</li>
+                <li><strong>Planifica estratégicamente</strong>: Identifica recursos de apoyo disponibles.</li>
+                <li><strong>Practica autocompasión</strong>: Háblate como le hablarías a un amigo querido.</li>
+            </ol>
+            
+            <p>Recuerda que <strong>esta situación es temporal</strong>. Tienes habilidades, talentos y cualidades que van mucho más allá de este resultado. Estoy aquí para apoyarte en lo que necesites.</p>
+        </div>
+        
+        <div class="options">
+            <h3>¿Cómo te sientes después de leer esto?</h3>
+            <button class="option-btn better" onclick="location.href='Mejor.html'">Me siento algo mejor</button>
+            <button class="option-btn worse" onclick="location.href='peor.html'">Me siento peor</button>
+        </div>
+    </div>
+
+    <div class="music-control" onclick="toggleMusic()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="musica1.mp3" type="audio/mpeg">
+        <!-- Reemplaza con tu archivo de música preferido -->
+    </audio>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        let musicPlaying = false;
+        
+        // Intenta reproducir automáticamente al cargar la página
+        window.addEventListener('DOMContentLoaded', (event) => {
+            // Primero silenciamos el audio para cumplir con políticas de autoplay
+            music.volume = 0;
+            
+            // Intentamos reproducir
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Si se reproduce con éxito, restauramos el volumen
+                    music.volume = 0.3;
+                    musicPlaying = true;
+                })
+                .catch(error => {
+                    // Si falla el autoplay, mostramos un mensaje para hacer click
+                    console.log("Autoplay falló, se requiere interacción del usuario");
+                    const container = document.querySelector('.container');
+                    const message = document.createElement('div');
+                    message.innerHTML = '<p style="color:#e74c3c; font-weight:bold;">Por favor haz click en cualquier parte de la página para activar la música</p>';
+                    container.prepend(message);
+                    
+                    document.body.addEventListener('click', function() {
+                        if (!musicPlaying) {
+                            music.volume = 0.3;
+                            music.play();
+                            musicPlaying = true;
+                            message.remove();
+                        }
+                    }, { once: true });
+                });
+            }
+        });
+        
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+    </script>
+</body>
+</html>
