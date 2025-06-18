@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Cómo te sientes hoy michel?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .main-container {
+            display: flex;
+            max-width: 900px;
+            width: 90%;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .container {
+            padding: 30px;
+            width: 60%;
+            box-sizing: border-box;
+        }
+        .image-container {
+            width: 40%;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .bear-image {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+        .options {
+            text-align: left;
+            margin: 25px 0;
+        }
+        .option {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+        }
+        input[type="radio"] {
+            transform: scale(1.2);
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        label {
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .container, .image-container {
+                width: 100%;
+            }
+            .image-container {
+                order: -1;
+                padding: 30px;
+            }
+            .bear-image {
+                max-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="container">
+            <h1>¿Te sientes triste hoy michel?</h1>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="demasiado" name="estado" value="demasiado">
+                    <label for="demasiado">Demasiado</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="leve" name="estado" value="leve">
+                    <label for="leve">Leve</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="normal" name="estado" value="normal">
+                    <label for="normal">Normal</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="feliz" name="estado" value="feliz">
+                    <label for="feliz">Estoy feliz</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="no" name="estado" value="no">
+                    <label for="no">No estoy triste</label>
+                </div>
+            </div>
+            <button onclick="redirigir()">Continuar</button>
+        </div>
+        
+        <div class="image-container">
+            <!-- Reemplaza esta URL con la imagen de tu oso -->
+            <img src="gato.png" alt="Oso de apoyo" class="bear-image">
+        </div>
+    </div>
+
+    <script>
+        function redirigir() {
+            const seleccion = document.querySelector('input[name="estado"]:checked');
+            
+            if (!seleccion) {
+                alert("Por favor selecciona una opción");
+                return;
+            }
+
+            const valor = seleccion.value;
+            let url;
+
+            switch(valor) {
+                case "demasiado":
+                    url = "demasiado.html";
+                    break;
+                case "leve":
+                    url = "leve.html";
+                    break;
+                case "normal":
+                    url = "Mejor.html";
+                    break;
+                case "feliz":
+                    url = "feliz.html";
+                    break;
+                case "no":
+                    url = "no.html";
+                    break;
+                default:
+                    url = "https://www.google.com";
+            }
+
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
