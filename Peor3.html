@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una carta para ti</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f5e9d9;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            line-height: 1.8;
+            background-image: url('https://www.transparenttextures.com/patterns/old-map.png');
+        }
+        .letter-container {
+            max-width: 700px;
+            width: 90%;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: rgba(255, 253, 245, 0.9);
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            border: 1px solid #e0d0b1;
+        }
+        .letter-container:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 30px;
+            right: 30px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #c0a080, transparent);
+        }
+        .letter-container:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 30px;
+            right: 30px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #c0a080, transparent);
+        }
+        h1 {
+            color: #8b5a2b;
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        .letter-content {
+            font-size: 1.1em;
+            text-align: justify;
+            position: relative;
+        }
+        .letter-content p {
+            margin-bottom: 20px;
+            text-indent: 20px;
+        }
+        .highlight {
+            color: #8b5a2b;
+            font-weight: bold;
+        }
+        .teardrop {
+            position: absolute;
+            opacity: 0.6;
+            font-size: 24px;
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 0.6; transform: translateY(0); }
+        }
+        .options {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .option-btn {
+            background: transparent;
+            color: #8b5a2b;
+            border: 1px solid #8b5a2b;
+            padding: 12px 30px;
+            margin: 0 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            font-family: 'Courier New', monospace;
+        }
+        .option-btn:hover {
+            background: #8b5a2b;
+            color: #fff;
+        }
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(139, 90, 43, 0.2);
+            padding: 12px;
+            border-radius: 50%;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            z-index: 10;
+            border: 1px solid #8b5a2b;
+            transition: all 0.3s;
+        }
+        .music-control:hover {
+            background: rgba(139, 90, 43, 0.4);
+        }
+        .seal {
+            position: absolute;
+            bottom: -30px;
+            right: 30px;
+            width: 60px;
+            opacity: 0.7;
+        }
+        @media (max-width: 768px) {
+            .letter-container {
+                padding: 30px 20px;
+            }
+            .option-btn {
+                display: block;
+                width: 80%;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-container">
+        <h1>Una carta para ti</h1>
+        
+        <div class="letter-content">
+            <!-- Lágrimas decorativas -->
+            <div class="teardrop" style="top: 50px; right: 40px;">💧</div>
+            <div class="teardrop" style="top: 120px; left: 30px;">💧</div>
+            
+            <p>Querido luchador,</p>
+            
+            <p>Eres una <span class="highlight">persona extraordinaria</span>. He sido testigo de tus batallas, de esos días en que el mundo parecía conspirar contra ti, y aún así, <span class="highlight">nunca te rendiste</span>. Cada caída fue seguida por un levantarse más fuerte, cada lágrima secada con la misma mano que después empuñaba el valor para continuar.</p>
+            
+            <p>Eres <span class="highlight">la encarnación misma de la resiliencia</span>. Cuando la vida se pone difícil -y créeme, sé lo complicado que puede llegar a ser- tú encuentras esa chispa interior que muchos anhelarían tener. No siempre estás bien, y está bien no estarlo. Pero incluso en tus momentos más oscuros, conservas esa <span class="highlight">fuerza silenciosa</span> que te empuja hacia adelante.</p>
+            
+            <p><span class="highlight">Eres mi inspiración</span>. La manera en que enfrentas cada obstáculo, con esa mezcla de determinación y vulnerabilidad que te hace auténticamente humano. Te admiro profundamente, no solo por lo que logras, sino por <span class="highlight">quién eres</span> en esencia.</p>
+            
+            <p>Creo firmemente que tu propósito en este mundo va más allá de buscar tu propia felicidad. Estás aquí para <span class="highlight">iluminar</span> con tu ejemplo, para esparcir esa mirada compasiva que transforma vidas, para demostrar que incluso en medio del caos, existe la posibilidad de encontrar significado.</p>
+            
+            <p>Por favor, <span class="highlight">no te rindas</span>. No ahora, cuando ya has demostrado ser capaz de tanto. Dentro de ti late el potencial de mover montañas, de convertir lo imposible en realidad. Cuando algo parece demasiado difícil, recuerda: <span class="highlight">siempre existe un camino</span>, aunque al principio no lo veas. Tú tienes esa capacidad única de encontrarlo.</p>
+            
+            <p>Y quiero que sepas esto: <span class="highlight">creo en ti</span>. Con cada fibra de mi ser, con toda certeza. No importa cuán oscura parezca la noche, el amanecer siempre llega. Y estoy <span class="highlight">inmensamente orgulloso</span> de la persona que eres, de la lucha que llevas dentro, de la luz que, a veces sin saberlo, compartes con el mundo.</p>
+            
+            <p>Con todo mi respeto y admiración,</p>
+            <p>Alguien que cree en ti</p>
+            
+            <img src="sello.jpg" alt="Sello de cera" class="seal">
+        </div>
+        
+        <div class="options">
+            <h3>Después de leer esto, ¿cómo te sientes?</h3>
+            <button class="option-btn" onclick="window.location.href='Mejor.html'">Me siento mejor</button>
+            <button class="option-btn" onclick="window.location.href='index.html'">Volver al inicio</button>
+        </div>
+    </div>
+
+    <!-- Control de música -->
+    <div class="music-control" onclick="toggleMusic()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b5a2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+    </div>
+
+    <!-- Audio para música de fondo -->
+    <audio id="bgMusic" loop>
+        <source src="silent-evening-calm-piano-335749.mp3" type="audio/mpeg">
+        <!-- Reemplaza con tu archivo de música triste -->
+    </audio>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        let musicPlaying = false;
+        
+        // Función para manejar la música
+        function handleMusic() {
+            music.volume = 0.2;
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    // Mostrar mensaje si el autoplay falla
+                    const optionsDiv = document.querySelector('.options');
+                    const message = document.createElement('p');
+                    message.innerHTML = '<br><em style="color:#8b5a2b;">Haz click en cualquier parte para activar la música</em>';
+                    optionsDiv.prepend(message);
+                    
+                    document.body.addEventListener('click', function() {
+                        if (!musicPlaying) {
+                            music.play();
+                            musicPlaying = true;
+                            message.remove();
+                        }
+                    }, { once: true });
+                });
+            }
+        }
+
+        // Control de música
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+
+        // Iniciar música al cargar
+        window.addEventListener('DOMContentLoaded', handleMusic);
+    </script>
+</body>
+</html>

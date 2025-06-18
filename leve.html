@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motívate - Videos Inspiradores</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            width: 100%;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+        }
+        .video-carousel {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            position: relative;
+        }
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 20px 0;
+            gap: 20px;
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .video-item {
+            flex: 0 0 auto;
+            width: 300px;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .video-item:hover {
+            transform: translateY(-5px);
+        }
+        .thumbnail {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .play-button::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 25px solid #e74c3c;
+            margin-left: 5px;
+        }
+        .video-info {
+            padding: 15px;
+        }
+        .video-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        .video-desc {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        .nav-button {
+            width: 40px;
+            height: 40px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #2980b9;
+        }
+        @media (max-width: 768px) {
+            .video-item {
+                width: 250px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Motivación para tu Día</h1>
+        <p class="subtitle">Selecciona un video para inspirarte</p>
+    </div>
+
+    <div class="video-carousel">
+        <div class="carousel-container" id="carousel">
+            <!-- Los videos se insertarán aquí con JavaScript -->
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-button" onclick="scrollCarousel(-1)">❮</button>
+            <button class="nav-button" onclick="scrollCarousel(1)">❯</button>
+        </div>
+    </div>
+
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <div class="video-wrapper">
+                <iframe id="videoFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lista de videos motivacionales (puedes agregar más)
+        const videos = [
+            {
+                id: "Q-SEaqvjNms",
+                title: "Supera tus límites",
+                description: "Inspirador video sobre cómo superar obstáculos y alcanzar tus metas personales."
+            },
+            {
+                id: "wn4Hmy3rzQ4",
+                title: "El poder de la perseverancia",
+                description: "Historia real de superación que demuestra que nunca es tarde para intentarlo."
+            },
+            {
+                id: "wFameKiMh_g",
+                title: "Cambia tu mentalidad",
+                description: "Cómo transformar tu forma de pensar para lograr el éxito en tu vida."
+            },
+            {
+                id: "kaqXaIXDl4Q",
+                title: "Guia productividad",
+                description: "Guia para ser mas pruductivo."
+            },
+            {
+                id: "WN_pRi27HjU",
+                title: "Motivación para estudiar",
+                description: "Encuentra la inspiración que necesitas para tus estudios y proyectos académicos."
+            },
+            {
+                id: "9S6hpWb3sYY",
+                title: "Desarrolla tu disciplina",
+                description: "La disciplina es más importante que la motivación para lograr tus objetivos."
+            },
+            {
+                id: "JmGxQ_kGLA0",
+                title: "Gato diciendo tu puede",
+                description: "Gato diciendo tu puede"
+            }
+        ];
+
+        const carousel = document.getElementById('carousel');
+        const videoModal = document.getElementById('videoModal');
+        const videoFrame = document.getElementById('videoFrame');
+
+        // Crea los elementos del carrusel
+        videos.forEach(video => {
+            const videoItem = document.createElement('div');
+            videoItem.className = 'video-item';
+            videoItem.innerHTML = `
+                <div class="thumbnail" onclick="openModal('${video.id}')">
+                    <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title}">
+                    <div class="play-button"></div>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">${video.title}</div>
+                    <div class="video-desc">${video.description}</div>
+                </div>
+            `;
+            carousel.appendChild(videoItem);
+        });
+
+        // Función para abrir el modal con el video
+        function openModal(videoId) {
+            videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            videoModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            videoFrame.src = '';
+            videoModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Función para navegar el carrusel
+        function scrollCarousel(direction) {
+            const scrollAmount = 320; // Ajusta según el ancho de tus items
+            carousel.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Cierra el modal al hacer clic fuera del video
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

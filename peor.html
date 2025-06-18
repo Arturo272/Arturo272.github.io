@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El peso de la derrota y la luz de la resiliencia</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e6e6e6;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+            margin: 40px auto;
+            text-align: justify;
+            position: relative;
+            overflow: hidden;
+            border-left: 3px solid #4a148c;
+        }
+        h1 {
+            color: #bb86fc;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-align: center;
+            font-weight: 300;
+            border-bottom: 1px solid #4a148c;
+            padding-bottom: 15px;
+        }
+        .message {
+            padding: 20px 0;
+        }
+        .message p {
+            margin-bottom: 25px;
+            text-indent: 30px;
+        }
+        .quote {
+            font-style: italic;
+            color: #bb86fc;
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 3px solid #4a148c;
+            background-color: rgba(74, 20, 140, 0.1);
+            font-size: 20px;
+        }
+        .options {
+            margin: 50px 0 30px;
+            text-align: center;
+        }
+        .option-btn {
+            background-color: transparent;
+            color: white;
+            border: 1px solid #bb86fc;
+            padding: 15px 30px;
+            margin: 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.4s;
+            min-width: 180px;
+        }
+        .option-btn:hover {
+            background-color: #bb86fc;
+            color: #121212;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(187, 134, 252, 0.4);
+        }
+        .better {
+            border-color: #03dac6;
+        }
+        .better:hover {
+            background-color: #03dac6;
+            box-shadow: 0 5px 15px rgba(3, 218, 198, 0.4);
+        }
+        .worse {
+            border-color: #cf6679;
+        }
+        .worse:hover {
+            background-color: #cf6679;
+            box-shadow: 0 5px 15px rgba(207, 102, 121, 0.4);
+        }
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(187, 134, 252, 0.2);
+            padding: 12px;
+            border-radius: 50%;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 1000;
+            border: 1px solid #bb86fc;
+            transition: all 0.3s;
+        }
+        .music-control:hover {
+            background: rgba(187, 134, 252, 0.4);
+            transform: scale(1.1);
+        }
+        .teardrop {
+            position: absolute;
+            background: rgba(187, 134, 252, 0.3);
+            width: 8px;
+            height: 8px;
+            border-radius: 50% 0 50% 50%;
+            animation: fall 6s linear infinite;
+            opacity: 0.7;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+            .container {
+                padding: 25px;
+            }
+            .option-btn {
+                display: block;
+                width: 80%;
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Crear lágrimas decorativas -->
+    <script>
+        for(let i=0; i<20; i++) {
+            const tear = document.createElement('div');
+            tear.classList.add('teardrop');
+            tear.style.left = Math.random() * 100 + 'vw';
+            tear.style.top = -10 + 'px';
+            tear.style.animationDelay = Math.random() * 5 + 's';
+            tear.style.width = Math.random() * 10 + 5 + 'px';
+            tear.style.height = tear.style.width;
+            document.body.appendChild(tear);
+        }
+    </script>
+
+    <div class="container">
+        <h1>El Eco de Nuestras Caídas</h1>
+        
+        <div class="message">
+            <p>Hay momentos en que la vida parece inclinarse sobre nosotros con todo su peso, como un cielo plomizo que amenaza con desplomarse. El fracaso no es un extraño en nuestra existencia; es un compañero incómodo pero persistente, que se sienta a la mesa de nuestro corazón cuando menos lo invitamos.</p>
+            
+            <p>Hoy, mientras lees estas palabras, quizá sientas ese nudo en la garganta que no se deshace, esa opresión en el pecho que te recuerda con cada latido lo que perdiste, lo que no fue, lo que pudo haber sido y no será. La derrota tiene un sabor amargo que se adhiere al paladar del alma, y no hay dulce que lo disimule.</p>
+            
+            <div class="quote">
+                "Caer es humano, quedarse en el suelo es rendirse, levantarse es divino."
+            </div>
+            
+            <p>El éxito que tanto anhelamos es un espejismo cruel cuando estamos postrados en el desierto de nuestras propias expectativas rotas. Nos enseñaron a venerar la cima, pero nadie nos preparó para el largo y oscuro descenso cuando resbalamos de aquellas alturas que tanto nos costaron alcanzar. Cada tropiezo es un duelo no reconocido, una muerte pequeña de lo que creímos ser.</p>
+            
+            <p>La sociedad nos mide por nuestros logros, pero calla sobre nuestras cicatrices. Hay una soledad especial en el fracaso, una que no se comparte fácilmente porque avergüenza, porque duele demasiado exponer esas partes rotas de nosotros mismos. Nos convertimos en artistas del disimulo, sonriendo mientras por dentro sangramos lentamente.</p>
+            
+            <p>¿Cuántas noches has pasado luchando contra tus propios pensamientos, repasando cada error, cada "si solo hubiera", cada momento en que pudiste haber tomado otro camino? El remordimiento es un cuchillo que gira lentamente en la herida, impidiendo que cicatrice.</p>
+            
+            <div class="quote">
+                "Los árboles más fuertes crecen no donde la tierra es más fértil, sino donde los vientos son más violentos."
+            </div>
+            
+            <p>Pero en este mismo instante, mientras el dolor parece insuperable, hay una verdad que quiero que escuches con todo tu ser: tu valor no disminuye porque hayas fallado. Las lágrimas que derramas no son signo de debilidad, sino de humanidad profunda. Cada caída contiene en su núcleo la semilla de una fuerza que no conocías, de una resistencia que solo se forja en la fragua del sufrimiento.</p>
+            
+            <p>Mira a tu alrededor con ojos honestos. La vida está llena de ejemplos silenciosos de resiliencia: la flor que crece en la grieta del pavimento, el río que sigue su curso a pesar de las rocas, el ave que reconstruye su nido después de cada tormenta. La naturaleza no juzga sus fracasos, simplemente persiste.</p>
+            
+            <p>Tus errores no te definen. Lo que realmente te constituye es cómo respondes a ellos. Este dolor que sientes ahora es el precio de haber intentado, de haber amado algo lo suficiente como para que su pérdida te duela. Y ese mismo dolor será, con el tiempo, la fuente de tu mayor sabiduría.</p>
+            
+            <p>Permítete sentir esta tristeza sin prisa. No hay calendario para el duelo de las esperanzas perdidas. Pero también recuerda: esta oscuridad no es tu destino final, sino solo un pasaje. Detrás de cada noche, por larga que sea, siempre asoma un amanecer.</p>
+            
+            <div class="quote">
+                "Lo que ahora duele como derrota, mañana brillará como experiencia."
+            </div>
+            
+            <p>Cuando te sientas listo, cuando el peso sea un poco más liviano, mira hacia adelante. No con los ojos del que ha sido derrotado, sino con los del que ha sido forjado en el fuego de la adversidad. Porque hay una verdad que ningún fracaso puede arrebatarte: mientras haya aliento en tus pulmones, habrá posibilidad de recomenzar.</p>
+            
+            <p>El mundo necesita no solo tu éxito, sino también tu historia de caída y recuperación. Porque es en nuestras grietas donde entra la luz, es en nuestra vulnerabilidad donde encontramos nuestra verdadera fuerza.</p>
+            
+            <p>Hoy puede ser difícil de creer, pero este dolor pasará. Y cuando mires atrás, no verás solo la caída, sino el increíble camino que recorriste para levantarte.</p>
+        </div>
+        
+        <div class="options">
+            <h3>Después de esta reflexión, ¿cómo te sientes?</h3>
+            <button class="option-btn better" onclick="location.href='Mejor.html'">Un poco mejor</button>
+            <button class="option-btn worse" onclick="location.href='peor2.html'">Peor que antes</button>
+        </div>
+    </div>
+
+    <div class="music-control" onclick="toggleMusic()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#bb86fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="sad-piano.mp3.mp3" type="audio/mpeg">
+        <!-- Reemplaza con tu archivo de música triste preferido -->
+    </audio>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        let musicPlaying = false;
+        
+        // Función para manejar la reproducción de música
+        function handleMusic() {
+            // Primero silenciamos el audio para cumplir con políticas de autoplay
+            music.volume = 0;
+            
+            // Intentamos reproducir
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Si se reproduce con éxito, restauramos el volumen gradualmente
+                    fadeInAudio();
+                    musicPlaying = true;
+                })
+                .catch(error => {
+                    // Si falla el autoplay, mostramos un mensaje para hacer click
+                    console.log("Autoplay falló, se requiere interacción del usuario");
+                    const optionsDiv = document.querySelector('.options');
+                    const message = document.createElement('p');
+                    message.innerHTML = '<br><em style="color:#bb86fc;">Haz click en cualquier parte para activar la música</em>';
+                    optionsDiv.prepend(message);
+                    
+                    document.body.addEventListener('click', function() {
+                        if (!musicPlaying) {
+                            fadeInAudio();
+                            music.play();
+                            musicPlaying = true;
+                            message.remove();
+                        }
+                    }, { once: true });
+                });
+            }
+        }
+        
+        // Función para aumentar el volumen gradualmente
+        function fadeInAudio() {
+            music.volume = 0;
+            const fadeInterval = setInterval(() => {
+                if (music.volume < 0.4) {
+                    music.volume += 0.05;
+                } else {
+                    clearInterval(fadeInterval);
+                }
+            }, 200);
+        }
+        
+        // Intentar reproducir al cargar la página
+        window.addEventListener('DOMContentLoaded', handleMusic);
+        
+        // Control de música
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+    </script>
+</body>
+</html>

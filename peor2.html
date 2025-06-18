@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Del Fondo al Cielo: Historias que Inspiran</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: #f8f9fa;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            text-align: center;
+        }
+        h1 {
+            color: #ffd166;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .carousel {
+            position: relative;
+            margin: 40px auto;
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 100%;
+            position: relative;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            cursor: pointer;
+            filter: brightness(0.7);
+            transition: filter 0.3s;
+        }
+        .carousel-item img:hover {
+            filter: brightness(1);
+        }
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            color: white;
+            font-size: 1.2em;
+        }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5em;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .carousel-control:hover {
+            background: rgba(0,0,0,0.8);
+        }
+        .prev {
+            left: 15px;
+        }
+        .next {
+            right: 15px;
+        }
+        .story-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 100;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .modal-content {
+            background: #2c3e50;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 10px;
+            position: relative;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #ff6b6b;
+            background: none;
+            border: none;
+        }
+        .story-title {
+            color: #ffd166;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        .story-text {
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+        .quote {
+            font-style: italic;
+            color: #a5d8ff;
+            border-left: 3px solid #ffd166;
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+        .options {
+            margin: 50px 0 30px;
+        }
+        .option-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid;
+            padding: 12px 30px;
+            margin: 0 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+        .better-btn {
+            border-color: #06d6a0;
+            color: #06d6a0;
+        }
+        .better-btn:hover {
+            background: #06d6a0;
+            color: #121212;
+        }
+        .worse-btn {
+            border-color: #ef476f;
+            color: #ef476f;
+        }
+        .worse-btn:hover {
+            background: #ef476f;
+            color: white;
+        }
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 209, 102, 0.2);
+            padding: 12px;
+            border-radius: 50%;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 10;
+            border: 1px solid #ffd166;
+            transition: all 0.3s;
+        }
+        .music-control:hover {
+            background: rgba(255, 209, 102, 0.4);
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .carousel-caption {
+                font-size: 1em;
+            }
+            .option-btn {
+                display: block;
+                width: 80%;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Del Abismo a la Cima: Historias que Inspiran</h1>
+        
+        <div class="carousel">
+            <div class="carousel-inner">
+                <!-- Personaje 1 -->
+                <div class="carousel-item">
+                    <img src="J.K. Rowling.jpg" alt="J.K. Rowling">
+                    <div class="carousel-caption">J.K. Rowling - De madre soltera en pobreza a autora multimillonaria</div>
+                </div>
+                
+                <!-- Personaje 2 -->
+                <div class="carousel-item">
+                    <img src="Nelson Mandela.jpg" alt="Nelson Mandela">
+                    <div class="carousel-caption">Nelson Mandela - 27 años en prisión a Presidente de Sudáfrica</div>
+                </div>
+                
+                <!-- Personaje 3 -->
+                <div class="carousel-item">
+                    <img src="Oprah Winfrey.jpg" alt="Oprah Winfrey">
+                    <div class="carousel-caption">Oprah Winfrey - De pobreza y abuso a magnate de medios</div>
+                </div>
+                
+                <!-- Personaje 4 -->
+                <div class="carousel-item">
+                    <img src="Abraham Lincoln.jpg" alt="Abraham Lincoln">
+                    <div class="carousel-caption">Abraham Lincoln - De múltiples fracasos a Presidente de EE.UU.</div>
+                </div>
+                
+                <!-- Personaje 5 -->
+                <div class="carousel-item">
+                    <img src="Stephen Hawking.jpg" alt="Stephen Hawking">
+                    <div class="carousel-caption">Stephen Hawking - De enfermedad devastadora a genio científico</div>
+                </div>
+
+                <!-- Personaje 6 -->
+                <div class="carousel-item">
+                    <img src="Mamá Tingó.jpg" alt="Mamá Tingó">
+                    <div class="carousel-caption">Mamá Tingó: De analfabeta a líder campesina</div>
+                </div>
+
+                <!-- Personaje 7 -->
+                <div class="carousel-item">
+                    <img src="Marie Curie.jpg" alt="Marie Curie">
+                    <div class="carousel-caption">Marie Curie: Madre y científica pionera</div>
+                </div>
+
+                <!-- Personaje 8 -->
+                <div class="carousel-item">
+                    <img src="Viola Desmond.jpg" alt="Viola Desmond">
+                    <div class="carousel-caption">Viola Desmond: Madre contra el racismo</div>
+                </div>
+
+                <!-- Personaje 9 -->
+                <div class="carousel-item">
+                    <img src="María Elena Moyano.jpg" alt="María Elena Moyano">
+                    <div class="carousel-caption">María Elena Moyano: Madre y líder comunitaria</div>
+                </div>
+
+                <!-- Personaje 10 -->
+                <div class="carousel-item">
+                    <img src="Ana Lucía.avif" alt="Ana Lucía">
+                    <div class="carousel-caption">Ana Lucía: De madre adolescente a profesional</div>
+                </div>
+            </div>
+            
+            <button class="carousel-control prev" onclick="moveCarousel(-1)">❮</button>
+            <button class="carousel-control next" onclick="moveCarousel(1)">❯</button>
+        </div>
+        
+        <div class="options">
+            <h3>Después de conocer estas historias, ¿cómo te sientes?</h3>
+            <button class="option-btn better-btn" onclick="window.location.href='Mejor.html'">Me siento mejor</button>
+            <button class="option-btn worse-btn" onclick="window.location.href='peor3.html'">Me siento peor</button>
+        </div>
+    </div>
+
+    <!-- Modal para historias -->
+    <div id="storyModal" class="story-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">×</button>
+            <h2 class="story-title" id="modalTitle">Título de la Historia</h2>
+            <div class="story-text" id="modalText">
+                <!-- Contenido de la historia se insertará aquí -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Control de música -->
+    <div class="music-control" onclick="toggleMusic()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+    </div>
+
+    <!-- Audio para música de fondo -->
+    <audio id="bgMusic" loop>
+        <source src="relaxing-piano-solo-ambient-358379.mp3" type="audio/mpeg">
+        <!-- Reemplaza con tu archivo de música inspiradora -->
+    </audio>
+
+    <script>
+        // Variables para el carrusel
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.carousel-item');
+        const inner = document.querySelector('.carousel-inner');
+        const totalItems = items.length;
+
+        // Mover el carrusel
+        function moveCarousel(direction) {
+            currentIndex = (currentIndex + direction + totalItems) % totalItems;
+            inner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // Historias de los personajes
+        const stories = [
+            {
+                title: "J.K. Rowling: De la Pobreza a la Magia",
+                content: `<p>En 1994, J.K. Rowling era una madre soltera viviendo de beneficios sociales en Edimburgo, tan pobre que no podía permitirse una máquina de escribir. Deprimida y sintiéndose un fracaso absoluto, escribía en cafés mientras su bebé dormía.</p>
+                <p class="quote">"El fracaso significa despojarse de lo innecesario. Dejé de fingir que era algo que no era y me concentré en el único trabajo que me importaba"</p>
+                <p>Su manuscrito de Harry Potter fue rechazado por 12 editoriales antes de que Bloomsbury lo aceptara. Hoy, sus libros han vendido más de 500 millones de copias y es una de las autoras más exitosas de la historia.</p>
+                <p>Rowling transformó su dolor en arte, usando su depresión para crear a los Dementores en sus libros. Su historia nos recuerda que el rock bottom puede convertirse en la base sólida sobre la que reconstruir nuestra vida.</p>`
+            },
+            {
+                title: "Nelson Mandela: 27 Años de Oscuridad",
+                content: `<p>Encarcelado en 1964 a los 46 años, Mandela pasó 27 años en prisión, 18 de ellos en la temible isla Robben, realizando trabajos forzados en una cantera de cal.</p>
+                <p class="quote">"No pierdas la esperanza. La libertad es imposible de detener cuando llega el momento"</p>
+                <p>En lugar de amargarse, estudió por correspondencia, organizó debates políticos clandestinos y mantuvo su dignidad. Al salir en 1990, lideró la transición pacífica que terminó con el apartheid.</p>
+                <p>Elegido presidente en 1994, promovió la reconciliación nacional. Su capacidad para perdonar a sus carceleros muestra que incluso las experiencias más oscuras pueden transformarse en sabiduría y liderazgo.</p>`
+            },
+            {
+                title: "Oprah Winfrey: De la Miseria al Éxito",
+                content: `<p>Nacida en la pobreza extrema en Mississippi, Oprah sufrió abuso sexual desde los 9 años, quedó embarazada a los 14 (el bebé murió al nacer) y fue enviada a vivir con su estricto padre.</p>
+                <p class="quote">"Convierte tus heridas en sabiduría. No hay que ser víctima de tu pasado"</p>
+                <p>Comenzó en radio mientras aún estaba en la universidad. Su estilo empático revolucionó la televisión. Hoy es una filántropa multimillonaria cuya influencia trasciende los medios.</p>
+                <p>Oprah demostró que nuestro pasado no nos define. Usó su dolor para conectar con millones, mostrando que la vulnerabilidad puede ser nuestra mayor fortaleza.</p>`
+            },
+            {
+                title: "Abraham Lincoln: Una Vida de Fracasos",
+                content: `<p>Antes de ser presidente, Lincoln acumuló fracasos: perdió su trabajo, quebró en los negocios, perdió 8 elecciones y sufrió depresión severa.</p>
+                <p class="quote">"El éxito consiste en ir de fracaso en fracaso sin perder el entusiasmo"</p>
+                <p>En 1832 perdió su trabajo y las elecciones legislativas. En 1833 fracasó en los negocios. En 1835 su prometida murió, sumiéndolo en depresión. En 1858 perdió las elecciones al Senado.</p>
+                <p>Sin embargo, en 1860 fue elegido presidente y lideró a EE.UU. en su hora más oscura. Su perseverancia cambió la historia, demostrando que los contratiempos son escalones, no obstáculos.</p>`
+            },
+            {
+                title: "Stephen Hawking: La Mente que Venció al Cuerpo",
+                content: `<p>Diagnosticado con ELA a los 21 años, los médicos le dieron 2 años de vida. Hawking perdió progresivamente el control de su cuerpo, quedando completamente paralizado.</p>
+                <p class="quote">"Recuerda mirar a las estrellas y no a tus pies. Por muy difícil que parezca la vida, siempre hay algo que puedes hacer y en lo que puedes triunfar"</p>
+                <p>Atrapado en su cuerpo, revolucionó la física con sus teorías sobre agujeros negros y el origen del universo. Escribió "Breve Historia del Tiempo", vendiendo millones de copias.</p>
+                <p>Hawking demostró que las limitaciones físicas no pueden contener a una mente brillante. Vivió 55 años más de lo pronosticado, convirtiéndose en símbolo de la perseverancia humana.</p>`
+            },
+            {
+                title: "Mamá Tingó: De analfabeta a líder campesina",
+                image: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Florinda_Mu%C3%B1oz_Soriano.jpg",
+                caption: "Analfabeta que defendió tierras y educó a sus hijos",
+                content: `<p>Florinda Soriano (Mamá Tingó), dominicana analfabeta que trabajó la tierra mientras criaba 4 hijos. Se convirtió en líder campesina defendiendo derechos agrarios.</p>
+                <p class="quote">"La tierra es como nuestros hijos: hay que cuidarla y defenderla"</p>
+                <p>Aunque fue asesinada por su activismo, su legado inspiró leyes agrarias y su familia continuó su lucha.</p>`
+            },
+        {
+            title: "Marie Curie: Madre y científica pionera",
+            image: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Marie_Curie_c._1920s.jpg",
+            caption: "Primera mujer en ganar un Nobel (y ganó dos)",
+            content: `<p>Crió a sus dos hijas sola tras quedar viuda, mientras realizaba investigaciones revolucionarias en física y química en condiciones precarias.</p>
+            <p class="quote">"En la vida no hay nada que temer, solo hay que entender"</p>
+            <p>Su hija Irène también ganó un Nobel, demostrando que la excelencia científica y la maternidad no son excluyentes.</p>`
+        },
+        {
+            title: "Viola Desmond: Madre contra el racismo",
+            image: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Viola_Desmond.jpg",
+            caption: "Emprendedora que desafió la segregación racial",
+            content: `<p>Esta esteticista canadiense crió a su familia mientras luchó contra la segregación en 1946, siendo arrestada por sentarse en zona "solo para blancos".</p>
+            <p class="quote">"Cuando te levantas por lo correcto, levantas a todos contigo"</p>
+            <p>Su caso inspiró cambios legales y hoy aparece en el billete de $10 canadiense.</p>`
+        },
+        {
+            title: "María Elena Moyano: Madre y líder comunitaria",
+            image: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Mar%C3%ADa_Elena_Moyano.jpg",
+            caption: "Organizó comedores populares en Perú bajo amenazas",
+            content: `<p>Madre de dos hijos que creó el Programa del Vaso de Leche para alimentar niños pobres durante la violencia terrorista en Perú.</p>
+            <p class="quote">"No tengamos miedo, compañeras. El miedo es el arma de los cobardes"</p>
+            <p>Fue asesinada por Sendero Luminoso en 1992, pero su movimiento sobrevivió y alimentó a miles.</p>`
+        },
+        {
+        title: "Ana Lucía: De madre adolescente a profesional",
+        image: "https://images.unsplash.com/photo-1529635761517-d5dc74682c2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        caption: "A los 15 años fue madre, a los 30 se graduó con honres",
+        content: `<p>Ana Lucía tenía 14 años cuando quedó embarazada. Su familia la rechazó y el padre del niño desapareció. "Recuerdo mirar a mi bebé recién nacido y sentir terror. No sabía cómo iba a cuidarlo", confiesa.</p>
+
+        <p class="quote">"Las noches eran lo peor. Mi hijo lloraba de hambre y yo lloraba de impotencia"</p>
+
+        <p>Regresó a la escuela secundaria mientras su abuela cuidaba al bebé. "Me quedaba dormida en clase. Las otras chicas hablaban de fiestas y yo pensaba en cómo pagar los pañales". Reprobó matemáticas dos veces por faltar tanto.</p>
+
+        <p>A los 17 consiguió trabajo como empleada doméstica. "Limpiaba casas de 5am a 2pm, luego corría a la escuela. A veces me cambiaba el uniforme en el bus". Su promedio era de 6.2, pero logró graduarse.</p>
+
+        <div class="quote">
+        "Cada vez que quería rendirme, miraba a mi hijo y recordaba que no podía fallarle"
+        </div>
+
+        <p>El milagro llegó cuando una señora para quien trabajaba le ofreció ayudarla con la universidad. "Estudiaba Administración de noche. Mi hijo hacía tarea a mi lado en la biblioteca. A veces se dormía y yo lo cargaba hasta casa".</p>
+
+        <p>Los primeros semestres fueron devastadores. "Reprobé Contabilidad dos veces. Lloraba en el baño de la facultad, pero volvía a intentarlo". Trabajaba los fines de semana en un call center para pagar los libros.</p>
+
+        <p>En quinto semestre todo cambió. "Un profesor me vio potencial y me consiguió una pasantía. Por primera vez sentí que podía lograrlo". Comenzó a sacar 8 y 9, aunque seguía trabajando 6 horas diarias.</p>
+
+        <p class="quote">"El día de mi graduación, mi hijo de 15 años me dijo: 'Mamá, ahora yo quiero estudiar para darte lo que tú me diste'"</p>
+
+        <p>Hoy Ana Lucía es supervisora en una empresa de logística. Su hijo está en la universidad. "Cuando veo a jóvenes que pasan por lo mismo que yo, les digo: La vida no se acaba porque empieces mal. Lo importante es cómo terminas".</p>`
+        },
+        ];
+
+        // Configurar clics en imágenes del carrusel
+        items.forEach((item, index) => {
+            item.querySelector('img').addEventListener('click', () => {
+                openModal(index);
+            });
+        });
+
+        // Abrir modal con historia
+        function openModal(index) {
+            document.getElementById('modalTitle').textContent = stories[index].title;
+            document.getElementById('modalText').innerHTML = stories[index].content;
+            document.getElementById('storyModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Cerrar modal
+        function closeModal() {
+            document.getElementById('storyModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Música de fondo
+        const music = document.getElementById('bgMusic');
+        let musicPlaying = false;
+
+        // Intentar reproducir música automáticamente
+        function handleMusic() {
+            music.volume = 0.3;
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    // Mostrar mensaje si el autoplay falla
+                    const optionsDiv = document.querySelector('.options');
+                    const message = document.createElement('p');
+                    message.innerHTML = '<br><em style="color:#ffd166;">Haz click en cualquier parte para activar la música</em>';
+                    optionsDiv.prepend(message);
+                    
+                    document.body.addEventListener('click', function() {
+                        if (!musicPlaying) {
+                            music.play();
+                            musicPlaying = true;
+                            message.remove();
+                        }
+                    }, { once: true });
+                });
+            }
+        }
+
+        // Control de música
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+
+        // Iniciar música al cargar
+        window.addEventListener('DOMContentLoaded', handleMusic);
+    </script>
+</body>
+</html>
